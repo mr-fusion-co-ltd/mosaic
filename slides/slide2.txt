@@ -1,0 +1,12 @@
+Current state
+-------------
+
+Most popular: Java/Spring/JEE using @annotations
+
+Can we do better?
+* abstraction
+* explorability
+* programmer-friendly
+* type-safety
+* flexibility
+* understandability
