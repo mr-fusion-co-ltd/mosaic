@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package com.example.account;
+
+import "google/protobuf/wrappers.proto";
+
+message AccountRef {
+  google.protobuf.UInt64Value account_no = 1;
+  google.protobuf.StringValue user_id = 2;
+  google.protobuf.StringValue client_account_id = 3;
+}
+
+message Account {
+  uint64 account_no = 1;
+  string user_id = 2;
+  google.protobuf.StringValue client_account_id = 3;
+  string currency_cd = 4;
+}
+
+message AccountCan {
+  uint64 account_no = 1;
+  string user_id = 2;
+  google.protobuf.StringValue client_account_id = 3;
+}
+
+message FetchAccountsRequest {
+  repeated uint64 ids = 1;
+}
+
+message FetchAccountResponse {
+  repeated Account accounts = 1;
+}
+
+service AccountService {
+  rpc CanonicalizeRef(AccountRef) returns (AccountCan);
+
+  rpc GetAccount(AccountRef) returns (Account);
+
+  rpc FetchAccounts(FetchAccountsRequest) returns (FetchAccountResponse);
+}
